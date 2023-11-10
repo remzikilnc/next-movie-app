@@ -1,5 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
+import Card from "@/components/card";
 
 const options = {
     method: 'GET',
@@ -32,11 +33,9 @@ export default function Home() {
             <button onClick={handleClick}>Ara</button>
         </section>
         <section>
-            <ul>
+            <ul className="card-listing">
             {movies.map(movie => (
-                <li className="movie-listing">
-                    <h2>{movie.title}</h2>
-                </li>
+              <Card key={movie.id} movie={movie} />
             ))}
             </ul>
         </section>

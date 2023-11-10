@@ -7,3 +7,17 @@ ul{
     margin:0;
     padding:0;
 }
+.card-listing{
+    margin-top: 50px;
+    display: flex;
+    gap: 1rem;
+    position: relative;
+}
+.card-listing h2{
+    position: absolute;
+    color: white;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: inline;
+    white-space: nowrap;
+}
