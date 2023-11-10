@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 
 const options = {
     method: 'GET',
@@ -10,6 +11,7 @@ const options = {
 
 export default function Home() {
     const [search, setSearch] = useState('');
+    const [movies, setMovies] = useState([]);
 /*
     fetch('https://api.themoviedb.org/3/movie/60625?language=en-US', options)
         .then(response => response.json())
@@ -17,19 +19,27 @@ export default function Home() {
         .catch(err => console.error(err));
 */
     const handleClick = () => {
-
-        fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options)
-            .then(response => response.json())
-            .then(response => console.log(response))
+        axios.get(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options)
+            .then(response => response.data)
+            .then(response => setMovies(response.results))
             .catch(err => console.error(err));
     }
 
   return (
     <>
-        <div>
+        <section>
             <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Bir şeyler yaz.."/>
             <button onClick={handleClick}>Ara</button>
-        </div>
+        </section>
+        <section>
+            <ul>
+            {movies.map(movie => (
+                <li className="movie-listing">
+                    <h2>{movie.title}</h2>
+                </li>
+            ))}
+            </ul>
+        </section>
     </>
   )
 }
