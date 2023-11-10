@@ -17,6 +17,7 @@ export default function Home() {
         .catch(err => console.error(err));
 */
     const handleClick = () => {
+
         fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options)
             .then(response => response.json())
             .then(response => console.log(response))
