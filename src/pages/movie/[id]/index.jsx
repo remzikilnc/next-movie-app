@@ -21,7 +21,6 @@ const Index = () => {
         }
     }, [id]);
 
-    console.log(movie)
     if (movie === null) {
         return <p>Loading...</p>
     }
