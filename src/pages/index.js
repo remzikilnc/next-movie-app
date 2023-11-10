@@ -13,16 +13,13 @@ const options = {
 export default function Home() {
     const [search, setSearch] = useState('');
     const [movies, setMovies] = useState([]);
-/*
-    fetch('https://api.themoviedb.org/3/movie/60625?language=en-US', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-*/
+
     const handleClick = () => {
         axios.get(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options)
             .then(response => response.data)
-            .then(response => setMovies(response.results))
+            .then(response => {
+                setMovies(response.results);
+            })
             .catch(err => console.error(err));
     }
 
