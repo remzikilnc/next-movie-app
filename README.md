@@ -4,8 +4,6 @@ Bu Next.js uygulaması, The Movie Database (TMDB) API'sini kullanarak film veril
 
 Film Listesi: Uygulama, TMDB API'sini kullanarak popüler filmlerin bir listesini alır ve kullanıcılara gösterir. Bu film listesi, filmin adı, afişi ve kısa bir açıklamasını içerir.
 
-Responsive Tasarım: Uygulama, farklı ekran boyutlarına uyum sağlar ve hem masaüstü hem de mobil cihazlarda iyi görünür.
-
 Dinamik Sayfa Yönlendirmesi: Kullanıcılar herhangi bir filme tıkladığında, dinamik olarak oluşturulan sayfalar aracılığıyla film detaylarına yönlendirilirler.
 
 Arama: Kullanıcılar arama çubuğunu kullanarak belirli bir filmi arayabilirler. Arama sonuçları, kullanıcının girdiği anahtar kelimelerle eşleşen filmleri gösterir.
