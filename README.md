@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project.
+Bu GitHub deposunun ana hedefi, React uygulamalarında yaygın olarak kullanılan useState ve useEffect gibi temel React hooklarını kullanmakla sınırlı.
 
 Bu Next.js uygulaması, The Movie Database (TMDB) API'sini kullanarak film verilerini çeken ve kullanıcılara sunan basit bir web uygulamasıdır. Proje, React tabanlı Next.js çerçevesi ile oluşturulmuştur.
 
