@@ -15,7 +15,7 @@ const Index = () => {
 
     useEffect(() => {
         if (id) {
-            axios.get(`https://api.themoviedb.org/3/movie/${id}`, options).then(res => {
+            axios.get(`https://api.themoviedb.org/3/movie/${id}&language=tr-TR`, options).then(res => {
                 setMovie(res.data);
             });
         }
@@ -26,12 +26,12 @@ const Index = () => {
     }
     return (
         <div className="flex justify-center items-center mt-8">
-           <div className="flex justify-center flex-col items-center gap-y-4">
+           <div className="flex justify-center flex-col items-center gap-y-4 max-w-xl">
                <div className="relative justify-center items-center flex flex-col p-8 gap-y-1">
                    <div className="justify-center flex items-center flex-col bg-stone-800 p-2 w-full rounded rounded-b-none bg-opacity-40">
                        <h1 className="text-white text-xl font-semibold">{movie.title}</h1>
                    </div>
-                   <img className="rounded rounded-b-none" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="poster"/>
+                   <img className="rounded rounded-b-none w-full" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="poster"/>
                    <div className="flex justify-center items-center gap-x-4 bg-stone-800 p-2 w-full rounded rounded-b-none bg-opacity-60">
                        <p className="text-white text-sm font-semibold mt-4">{movie.overview}</p>
                    </div>

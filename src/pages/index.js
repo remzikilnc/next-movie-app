@@ -1,7 +1,10 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import Card from "@/components/card";
 import {BsSearch} from "react-icons/bs";
+import CardLoading from "@/components/card/loading";
+import CardsLoadingGrid from "@/components/card/loading";
+import MovieNotFound from "@/components/movie-not-found";
 
 const options = {
     method: 'GET', headers: {
@@ -12,10 +15,23 @@ const options = {
 
 export default function Home() {
     const [search, setSearch] = useState('');
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState(null);
+    const [popularMovies, setPopularMovies] = useState(null);
+
+    useEffect(() => {
+        axios.get('https://api.themoviedb.org/3/movie/popular', options)
+            .then(response => response.data)
+            .then(response => {
+                setPopularMovies(response.results);
+                setMovies(response.results);
+            })
+            .catch(err => console.error(err));
+    }, []);
 
     const handleClick = () => {
-        axios.get(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options)
+        setMovies(null)
+        if (search === '') { setMovies(popularMovies); return; }
+        axios.get(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=tr-TR&page=1`, options)
             .then(response => response.data)
             .then(response => {
                 setMovies(response.results);
@@ -30,17 +46,23 @@ export default function Home() {
                     <BsSearch className="text-white ml-1"/>
                     <input
                         className="bg-transparent placeholder:text-gray-300 focus:ring-0 focus:outline-none text-white"
-                        onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Yazmaya başla.."/>
+                        onChange={(e) => setSearch(e.target.value)}
+                        type="text"
+                        placeholder="Yazmaya başla.."/>
                 </div>
-                <button className="text-white bg-purple-800 rounded mx-4 px-2 text-sm" onClick={handleClick}>Arama
-                </button>
+                <button className="text-white bg-purple-800 rounded mx-4 px-2 text-sm" onClick={handleClick}>Arama</button>
             </section>
 
         </header>
         <section className="p-3">
-            <ul className="grid grid-cols-8 gap-4">
-                {movies.map(movie => (<Card key={movie.id} movie={movie}/>))}
-            </ul>
+            {
+                movies === null ? <CardsLoadingGrid/> :
+                    movies.length === 0 ? <MovieNotFound/> :
+                        <ul className="grid grid-cols-8 gap-4">
+                            {movies.map(movie => (<Card key={movie.id} movie={movie}/>))}
+                        </ul>
+            }
+
         </section>
     </>)
 }
