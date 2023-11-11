@@ -1,20 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project.
 
-## Getting Started
+Bu Next.js uygulaması, The Movie Database (TMDB) API'sini kullanarak film verilerini çeken ve kullanıcılara sunan basit bir web uygulamasıdır. Proje, React tabanlı Next.js çerçevesi ile oluşturulmuştur.
 
-First, run the development server:
+Film Listesi: Uygulama, TMDB API'sini kullanarak popüler filmlerin bir listesini alır ve kullanıcılara gösterir. Bu film listesi, filmin adı, afişi ve kısa bir açıklamasını içerir.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Responsive Tasarım: Uygulama, farklı ekran boyutlarına uyum sağlar ve hem masaüstü hem de mobil cihazlarda iyi görünür.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Dinamik Sayfa Yönlendirmesi: Kullanıcılar herhangi bir filme tıkladığında, dinamik olarak oluşturulan sayfalar aracılığıyla film detaylarına yönlendirilirler.
 
-
+Arama: Kullanıcılar arama çubuğunu kullanarak belirli bir filmi arayabilirler. Arama sonuçları, kullanıcının girdiği anahtar kelimelerle eşleşen filmleri gösterir.
 ## Screenshots
 
 ### Home

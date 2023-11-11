@@ -58,7 +58,7 @@ export default function Home() {
             {
                 movies === null ? <CardsLoadingGrid/> :
                     movies.length === 0 ? <MovieNotFound/> :
-                        <ul className="grid grid-cols-8 gap-4">
+                        <ul className="grid gap-4 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8 grid-cols-2">
                             {movies.map(movie => (<Card key={movie.id} movie={movie}/>))}
                         </ul>
             }
